@@ -26,11 +26,25 @@ Deux joueurs peuvent ensuite jouer à tour de rôle sur cette planche jusqu'à c
 
 ## Screenshots
 
+### Scan de l'environnement
 ![Scan de l'environnement](Assets/Screenshots/Scan.png)
+> Détection des surfaces AR avant le placement du plateau.
+
+### Nouvelle partie
 ![Nouvelle partie](Assets/Screenshots/NouvellePartie.png)
+> L'utilisateur place la planche et la partie est prête à commencer.
+
+### Partie en cours
 ![Partie en cours](Assets/Screenshots/PartieEnCours.png)
+> Un exemple de jeu en cours avec plusieurs symboles déjà placés.
+
+### Cercle vainqueur
 ![Cercle vainqueur](Assets/Screenshots/CercleVainqueur.png)
-![PartieNulle](Assets/Screenshots/PartieNulle.png)
+> Illustration d'une victoire avec le symbole cercle.
+
+### Partie nulle
+![Partie nulle](Assets/Screenshots/PartieNulle.png)
+> Exemple d'un match terminé sans vainqueur.
 
 ---
 
