@@ -10,6 +10,9 @@ public class PlacementRaycast : MonoBehaviour
     public GameObject objetAPlacer;
     public ARPlaneManager arPlaneManager;
 
+    public ARAnchorManager arAnchorManager;
+    private ARAnchor ancreActuelle;
+
     void Update()
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)
@@ -35,11 +38,26 @@ public class PlacementRaycast : MonoBehaviour
 
     void PlacerPlanche(RaycastHit hit)
     {
-        Quaternion rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-        GameObject planche = Instantiate(objetAPlacer, hit.point, rotation);
+        // Récupérer le plane AR touché
+        ARPlane arPlane = hit.collider.GetComponent<ARPlane>();
 
-        GameManager.Instance.InitialiserPartie(planche);
-        DesactiverARPlaneManager();
+        if (arPlane != null)
+        {
+            // Créer une ancre sur le plane
+            Pose anchorPose = new Pose(hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+            ancreActuelle = arAnchorManager.AttachAnchor(arPlane, anchorPose);
+
+            if (ancreActuelle != null)
+            {
+                // Instancier la planche comme enfant de l'ancre
+                GameObject planche = Instantiate(objetAPlacer, ancreActuelle.transform);
+                planche.transform.localPosition = Vector3.zero;
+                planche.transform.localRotation = Quaternion.identity;
+
+                GameManager.Instance.InitialiserPartie(planche);
+                DesactiverARPlaneManager();
+            }
+        }
     }
 
     void DesactiverARPlaneManager()
@@ -65,6 +83,14 @@ public class PlacementRaycast : MonoBehaviour
         GameManager.Instance.partieEnCours = false;
         GameManager.Instance.RedemarrerPartieAvecPlancheExistante(); // Nettoie le stock comme il faut avant de déplacer
 
+        // Détruire l'ancre 
+        if (ancreActuelle != null)
+        {
+            Destroy(ancreActuelle.gameObject);
+            ancreActuelle = null;
+        }
+
+        // Détruire la planche 
         if (GameManager.Instance.plancheActuelle != null)
             Destroy(GameManager.Instance.plancheActuelle);
 
