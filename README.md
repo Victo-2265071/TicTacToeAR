@@ -1,7 +1,7 @@
 # TicTacToeAR
 
 **Auteur :** William Champagne  
-**Date :** 2026-02-07
+**Date :** 2026-02-07  
 **Version Unity :** 6.3 LTS (6000.0.5f1)  
 
 ---
