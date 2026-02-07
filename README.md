@@ -24,6 +24,16 @@ Deux joueurs peuvent ensuite jouer à tour de rôle sur cette planche jusqu'à c
 
 ---
 
+## Screenshots
+
+![Scan de l'environnement](Assets/Screenshots/Scan.png)
+![Nouvelle partie](Assets/Screenshots/NouvellePartie.png)
+![Partie en cours](Assets/Screenshots/PartieEnCours.png)
+![Cercle vainqueur](Assets/Screenshots/CercleVainqueur.png)
+![PartieNulle](Assets/Screenshots/PartieNulle.png)
+
+---
+
 ## Packages utilisés
 
 - **AR Foundation**
